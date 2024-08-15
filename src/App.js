@@ -1,8 +1,9 @@
 import React from 'react';
+import './styles.css';
 
 function AlbumInfo(props) {
     return (
-        <div>
+        <div className="album-card">
             <p>{props.album}</p>
             <img src={props.cover} alt={props.album} />
         </div>
@@ -25,8 +26,20 @@ function BandInfo() {
         ]
     };
 
+    const bandStyle = {
+        width: '80%',
+        margin: '10px auto',
+        padding: '20px',
+        borderRadius: '10px',
+        backgroundColor: '#4184e9',
+        color: '#f2f2f2',
+        textAlign: 'center',
+        fontSize: '2em',
+        fontFamily: 'Verdana, Tahoma, sans-serif'
+    };
+
     return (
-        <div>
+        <div style={bandStyle}>
             <h1>{band.name}</h1>
             <p><strong>Genre: </strong>{band.genre}</p>
             <p><strong>Members: </strong>{band.members.join(', ')}</p>
