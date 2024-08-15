@@ -4,7 +4,7 @@ function AlbumInfo(props) {
     return (
         <div>
             <p>{props.album}</p>
-            <img src={props.cover} />
+            <img src={props.cover} alt={props.album} />
         </div>
     );
 }
@@ -16,8 +16,13 @@ function BandInfo() {
         name: 'AC/DC',
         genre: 'Rock',
         members: ['Angus Young', 'Phil Rudd', 'Cliff Williams', 'Brian Johnson', 'Stevie Young'],
-        albums: ['Back in Black', 'Highway to Hell', 'The Razors Edge', 'High Voltage', 'Dirty Dids Done Dirt Cheap'],
-        covers: ['alb1.jpg', 'alb2.jpg', 'alb3.jpg', 'alb4.jpg', 'alb5.jpg']
+        albums: [
+            ['Back in Black', 'Back in Black.jpg'],
+            ['Highway to Hell', 'Highway to Hell.jpg'],
+            ['The Razors Edge', 'The Razors Edge.jpg'],
+            ['High Voltage', 'High Voltage.jpg'],
+            ['Dirty Dids Done Dirt Cheap', 'Dirty Dids Done Dirt Cheap.jpg']
+        ]
     };
 
     return (
@@ -26,11 +31,11 @@ function BandInfo() {
             <p><strong>Genre: </strong>{band.genre}</p>
             <p><strong>Members: </strong>{band.members.join(', ')}</p>
             <h2>Top albums:</h2>
-            <AlbumInfo album={band.albums[0]} cover={band.covers[0]}></AlbumInfo>
-            <AlbumInfo album={band.albums[1]} cover={band.covers[1]}></AlbumInfo>
-            <AlbumInfo album={band.albums[2]} cover={band.covers[2]}></AlbumInfo>
-            <AlbumInfo album={band.albums[3]} cover={band.covers[3]}></AlbumInfo>
-            <AlbumInfo album={band.albums[4]} cover={band.covers[4]}></AlbumInfo>
+
+            {band.albums.map((album, index) => (
+                <AlbumInfo key={index} album={album[0]} cover={album[1]}></AlbumInfo>
+            ))}
+
         </div>
     );
 
